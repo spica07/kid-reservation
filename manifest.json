@@ -1,0 +1,17 @@
+{
+  "name": "꼬마 예약 달력",
+  "short_name": "꼬마 예약",
+  "description": "서울·경기·인천 미취학 아이 인기 체험 예약, 오픈 날짜와 시각을 한눈에",
+  "lang": "ko",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFE5F1",
+  "theme_color": "#6B5B95",
+  "categories": ["kids", "lifestyle", "education"],
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

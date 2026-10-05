@@ -45,7 +45,7 @@
     const timeOk = /^\d{2}:\d{2}$/.test(o.time || '');
     if (o.rule === 'rolling') return timeOk && Number.isInteger(o.daysBefore) && o.daysBefore >= 1;
     if (!TIMED_RULES.includes(o.rule) || !timeOk) return false;
-    if (o.rule === 'monthly') return o.day >= 1 && o.day <= 31;
+    if (o.rule === 'monthly') return [].concat(o.day).every(d => Number.isInteger(d) && d >= 1 && d <= 31);
     if (o.rule === 'monthlyWeekday') return o.weekday >= 0 && o.weekday <= 6 && (o.week === -1 || (o.week >= 1 && o.week <= 5));
     return o.weekday >= 0 && o.weekday <= 6;
   }
@@ -69,15 +69,18 @@
     let { y, m } = parse(from);
     const end = parse(to);
     while (y < end.y || (y === end.y && m <= end.m)) {
-      let date = open.rule === 'monthly'
-        ? ymd(y, m, Math.min(open.day, daysInMonth(y, m)))
-        : nthWeekday(y, m, open.week, open.weekday);
-      // 주말이면 다음 평일로 (공휴일은 알 수 없으니 overrides로 확정한다)
-      if (date && open.rule === 'monthly' && open.weekdayOnly) {
-        const wd = weekdayOf(date);
-        if (wd === 6) date = addDays(date, 2); else if (wd === 0) date = addDays(date, 1);
-      }
-      if (date && date >= from && date <= to) out.push(date);
+      const dates = open.rule === 'monthly'
+        ? [].concat(open.day).map(day => ymd(y, m, Math.min(day, daysInMonth(y, m))))
+        : [nthWeekday(y, m, open.week, open.weekday)];
+      dates.forEach(d => {
+        let date = d;
+        // 주말이면 다음 평일로 (공휴일은 알 수 없으니 overrides로 확정한다)
+        if (date && open.rule === 'monthly' && open.weekdayOnly) {
+          const wd = weekdayOf(date);
+          if (wd === 6) date = addDays(date, 2); else if (wd === 0) date = addDays(date, 1);
+        }
+        if (date && date >= from && date <= to) out.push(date);
+      });
       m += 1; if (m > 12) { m = 1; y += 1; }
     }
     return out;
@@ -90,7 +93,8 @@
     }
     const open = program.open;
     const to = addDays(from, days - 1);
-    const byMonth = open.rule === 'monthly' || open.rule === 'monthlyWeekday';
+    // 한 달에 한 번 열리는 규칙만 '그 달 회차'를 통째로 대체하고, 여러 번 열리면 날짜 단위로 맞춘다
+    const byMonth = (open.rule === 'monthly' && !Array.isArray(open.day)) || open.rule === 'monthlyWeekday';
     const keyOf = d => (byMonth ? d.slice(0, 7) : d);
     const labelOf = d => { const { y, m } = parse(d); return targetLabel(open.target, y, m); };
     const overrides = Array.isArray(program.overrides) ? program.overrides.filter(o => o && o.date) : [];
@@ -117,13 +121,14 @@
 
   function formatTime(t) {
     const [h, mi] = t.split(':').map(Number);
-    if (h === 0 && mi === 0) return '자정';
+    if (h === 0 && mi === 0) return '0시'; // '자정'은 전날 밤인지 헷갈려서 쓰지 않는다
     const part = h === 12 ? '낮' : h < 12 ? '오전' : '오후';
     const hh = h > 12 ? h - 12 : h;
     return `${part} ${hh}시${mi ? ` ${mi}분` : ''}`;
   }
 
   function monthlyDay(open) {
+    if (Array.isArray(open.day)) return open.day.map(d => `${d}일`).join('·');
     if (!open.weekdayOnly) return `${open.day}일`;
     return open.day === 1 ? '첫 평일' : `${open.day}일(주말이면 다음 평일)`;
   }

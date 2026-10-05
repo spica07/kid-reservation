@@ -9,7 +9,8 @@ window.KR_PROGRAMS = [
     region: 'gyeonggi', regionName: '경기', location: '경기 고양시 일산동구 한류월드로 281 (EBS 사옥)',
     category: '방송·직업체험', age: '6세 이상 (보호자를 포함한 인원으로 신청)', fee: '무료', free: true,
     open: { rule: 'monthly', day: 1, time: '10:00', target: 'next-month', weekdayOnly: true },
-    overrides: [{ date: '2026-10-01', time: '10:00', note: '11월분' }],
+    // 2027-01-01은 신정이라 공식 규칙(전월 첫 평일)대로 1월 4일(월)
+    overrides: [{ date: '2026-10-01', time: '10:00', note: '11월분' }, { date: '2027-01-04', time: '10:00', note: '2월분 (신정 다음 첫 평일)' }],
     method: '선착순', bookingUrl: 'https://about.ebs.co.kr/kor/customer/request?tabVal=tour',
     tip: '매주 화요일 오후 2시 투어, 한 회에 15명뿐이라 열리자마자 마감돼요. 휴대폰 하나로 한 달에 한 번만 신청할 수 있어요. 1일이 공휴일이면 그다음 평일에 열려요.',
     verifiedAt: '2026-10-05', source: 'https://about.ebs.co.kr/kor/customer/request?tabVal=tour',

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; img-src 'self' data:; worker-src 'self'; manifest-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none';">
+<title>꼬마 예약 달력</title>
+<meta name="description" content="서울·경기·인천 미취학 아이 인기 체험 예약, 오픈 날짜와 시각을 한눈에">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6B5B95">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/icons/favicon-64.png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="꼬마 예약">
+<link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<header class="top">
+  <h1><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>꼬마 예약 달력</h1>
+  <p class="sub">미취학 아이 인기 체험, 예약이 열리는 날을 모았어요</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="화면 전환">
+  <button class="tab active" role="tab" id="tab-open" aria-selected="true" aria-controls="panel-open">오픈 달력</button>
+  <button class="tab" role="tab" id="tab-list" aria-selected="false" aria-controls="panel-list">예약처 모음</button>
+  <button class="tab" role="tab" id="tab-fav" aria-selected="false" aria-controls="panel-fav">찜</button>
+</nav>
+
+<main>
+  <section id="panel-open" class="panel" role="tabpanel" aria-labelledby="tab-open">
+    <h2 class="sec-title">곧 열려요 <span class="hint">7일 안</span></h2>
+    <div id="soon" class="soon"></div>
+    <h2 class="sec-title">앞으로 60일</h2>
+    <div id="calendar" class="calendar"></div>
+  </section>
+
+  <section id="panel-list" class="panel" role="tabpanel" aria-labelledby="tab-list" hidden>
+    <div id="filters" class="filters"></div>
+    <div id="cards" class="cards"></div>
+    <h2 class="sec-title">서울시 공공예약 유아 프로그램</h2>
+    <p class="hint block" id="public-meta"></p>
+    <div id="public-list" class="public-list"></div>
+  </section>
+
+  <section id="panel-fav" class="panel" role="tabpanel" aria-labelledby="tab-fav" hidden>
+    <p class="hint block">별표를 누른 곳의 다음 오픈 일정이에요. 내 달력에 넣으면 10분 전에 알림이 와요.</p>
+    <button id="fav-ics" class="btn primary" type="button" hidden>찜한 곳 오픈 일정 내 달력에 넣기</button>
+    <div id="fav-list" class="cards"></div>
+  </section>
+</main>
+
+<dialog id="detail" class="detail" aria-labelledby="detail-title"></dialog>
+
+<footer class="foot">
+  <a href="https://spica07.github.io/kid-festival/">꼬마 놀이터 행사 보러 가기</a>
+  <p>정보 공유를 위한 비영리 사이트예요. 예약 조건은 바뀔 수 있으니 꼭 공식 안내를 먼저 확인해 주세요. "예상"은 반복 규칙으로 계산한 날짜, "확정"은 공식 공지로 확인한 날짜예요.</p>
+</footer>
+
+<script src="assets/js/schedule.js"></script>
+<script src="assets/js/ics.js"></script>
+<script src="assets/js/favorites.js"></script>
+<script src="assets/data/programs.js"></script>
+<script src="assets/data/public-programs.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
