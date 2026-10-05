@@ -37,7 +37,7 @@ window.KR_PROGRAMS = [
   },
   {
     id: 'inmm-kids', name: '국립인천해양박물관 어린이박물관', org: '국립인천해양박물관',
-    region: 'incheon', regionName: '인천', location: '인천 중구 월미로 294',
+    region: 'incheon', regionName: '인천', location: '인천 제물포구 월미로 294',
     category: '박물관·과학관', age: '어린이 (어린이 4명당 보호자 1명 필수, 36개월 미만도 예약 인원에 포함)', fee: '무료', free: true,
     open: { rule: 'monthly', day: [1, 15], time: '09:00', note: '2주치씩 열려요' },
     overrides: [],
@@ -412,8 +412,8 @@ window.KR_PROGRAMS = [
     verifiedAt: '2026-07-10', source: 'kid-festival festivals.js (부평숲 인천나비공원, 2026-07-10 확인)',
   },
   {
-    id: 'nokcheongja', name: '녹청자박물관 도자기 체험', org: '인천 서구',
-    region: 'incheon', regionName: '인천', location: '인천 서구 도요지로 54',
+    id: 'nokcheongja', name: '녹청자박물관 도자기 체험', org: '인천 서해구',
+    region: 'incheon', regionName: '인천', location: '인천 서해구 도요지로 54',
     category: '박물관·과학관', age: '유아·어린이 가족', fee: '관람 무료 · 도자기 체험 유료', free: false,
     open: { rule: 'always', note: '주말·공휴일 물레·페인팅 체험은 온라인 사전예약해요' },
     overrides: [],

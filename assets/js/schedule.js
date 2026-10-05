@@ -74,10 +74,12 @@
         : [nthWeekday(y, m, open.week, open.weekday)];
       dates.forEach(d => {
         let date = d;
-        // 주말이면 다음 평일로 (공휴일은 알 수 없으니 overrides로 확정한다)
+        // 주말이면 다음 평일로. 그러면 다음 달로 넘어가는 월말은 그 달 마지막 평일로 당긴다
+        // (공휴일은 알 수 없으니 overrides로 확정한다)
         if (date && open.rule === 'monthly' && open.weekdayOnly) {
           const wd = weekdayOf(date);
-          if (wd === 6) date = addDays(date, 2); else if (wd === 0) date = addDays(date, 1);
+          const fwd = wd === 6 ? addDays(date, 2) : wd === 0 ? addDays(date, 1) : date;
+          date = fwd.slice(0, 7) === date.slice(0, 7) ? fwd : addDays(date, wd === 6 ? -1 : -2);
         }
         if (date && date >= from && date <= to) out.push(date);
       });
@@ -98,7 +100,8 @@
     const keyOf = d => (byMonth ? d.slice(0, 7) : d);
     const labelOf = d => { const { y, m } = parse(d); return targetLabel(open.target, y, m); };
     const overrides = Array.isArray(program.overrides) ? program.overrides.filter(o => o && o.date) : [];
-    const overridden = new Set(overrides.map(o => keyOf(o.date)));
+    // replaces: 확정일이 다른 달(날)로 옮겨졌을 때 원래 회차의 달('YYYY-MM') 또는 날('YYYY-MM-DD')
+    const overridden = new Set(overrides.map(o => o.replaces || keyOf(o.date)));
 
     const result = TIMED_RULES.includes(open.rule)
       ? ruleDates(open, from, to)

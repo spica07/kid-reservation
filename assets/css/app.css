@@ -7,6 +7,7 @@
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { background: #FFF9E5; }
+[hidden] { display: none !important; }
 body {
   font-family: 'Jua', 'Gaegu', sans-serif; color: var(--ink);
   background: linear-gradient(135deg, #FFE5F1 0%, #E5F4FF 50%, #FFF9E5 100%);

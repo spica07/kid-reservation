@@ -161,7 +161,8 @@
   function renderFav(now) {
     if (!fav.available) { $('fav-list').innerHTML = '<p class="empty">이 브라우저에서는 찜을 저장할 수 없어요. 사생활 보호 모드라면 일반 창에서 열어 주세요.</p>'; $('fav-ics').hidden = true; return; }
     const list = fav.list().map(byId).filter(Boolean);
-    $('fav-ics').hidden = !list.length;
+    // 상시·관람일 N일 전 방식만 찜했으면 달력에 넣을 일정이 없으니 버튼을 숨긴다(빈 .ics 방지)
+    $('fav-ics').hidden = !list.some(p => icsEventsFor(p, now).length);
     $('fav-list').innerHTML = list.length ? list.map(p => cardHtml(p, now)).join('') : '<p class="empty">아직 찜한 곳이 없어요. 예약처 모음에서 별표를 눌러 보세요.</p>';
   }
 
@@ -194,7 +195,7 @@
       <p class="hint">${esc(p.verifiedAt)}에 공식 안내로 확인했어요.</p>
       ${ageDays > STALE_DAYS ? '<p class="stale">확인한 지 오래됐어요. 예약 전에 공식 안내를 꼭 다시 봐 주세요.</p>' : ''}
       <div class="actions"><a class="btn primary" href="${esc(p.bookingUrl)}" target="_blank" rel="noopener">${ICON_LINK}공식 예약 페이지</a>
-      ${next.length ? `<button class="btn" type="button" data-ics="${esc(p.id)}">${ICON_CAL}내 달력에 넣기</button>` : ''}</div>`;
+      ${icsEventsFor(p, now).length ? `<button class="btn" type="button" data-ics="${esc(p.id)}">${ICON_CAL}내 달력에 넣기</button>` : ''}</div>`;
     if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
   }
 

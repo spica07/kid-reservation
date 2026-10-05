@@ -34,3 +34,10 @@ for (const p of programs) {
     assert.ok(!/누리집|\*\*/.test(JSON.stringify(p)), '금지 표현');
   });
 }
+
+test('인천 2026-07 개편 뒤 구 이름(중구·동구·서구)을 쓰지 않는다', () => {
+  for (const p of programs) {
+    if (p.region !== 'incheon') continue;
+    assert.ok(!/인천 (중구|동구|서구)/.test(p.location + ' ' + p.org), `${p.id}: ${p.location} / ${p.org}`);
+  }
+});

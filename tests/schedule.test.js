@@ -155,3 +155,23 @@ test('monthly day 배열: 매월 1일·15일, 날짜 단위로 취소·확정한
   assert.equal(S.isValidProgram(monthly({ open: { rule: 'monthly', day: [1, 40], time: '09:00' } })), false);
   assert.equal(S.describeRule(p.open), '매월 1일·15일 오전 9시');
 });
+
+test('weekdayOnly: 월말이 주말이면 다음 달로 넘기지 않고 그 달 마지막 평일로 당긴다', () => {
+  const p = monthly({ open: { rule: 'monthly', day: 31, time: '10:00', target: 'next-month', weekdayOnly: true } });
+  // 2026-01-31 토 → 1/30 금, 2026-02-28 토 → 2/27 금, 2026-03-31 화 그대로
+  assert.deepEqual(S.occurrences(p, '2026-01-01', 90).map(o => [o.date, o.label]),
+    [['2026-01-30', '2월분'], ['2026-02-27', '3월분'], ['2026-03-31', '4월분']]);
+});
+
+test('overrides.replaces: 다른 달로 당겨진 확정일은 원래 회차만 지운다', () => {
+  const p = monthly({ overrides: [{ date: '2026-11-30', time: '10:00', note: '1월분', replaces: '2026-12' }] });
+  assert.deepEqual(S.occurrences(p, '2026-11-01', 45).map(o => [o.date, o.label, o.confirmed]), [
+    ['2026-11-01', '12월분', false],
+    ['2026-11-30', '1월분', true],
+  ]);
+});
+
+test('overrides.replaces: 날짜 단위 규칙은 원래 날짜를 지운다', () => {
+  const p = monthly({ open: { rule: 'monthly', day: [1, 15], time: '09:00' }, overrides: [{ date: '2026-11-16', replaces: '2026-11-15' }] });
+  assert.deepEqual(S.occurrences(p, '2026-11-01', 30).map(o => [o.date, o.confirmed]), [['2026-11-01', false], ['2026-11-16', true]]);
+});

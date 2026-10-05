@@ -13,7 +13,7 @@
 | rule | 예 | 달력 표시 |
 |---|---|---|
 | `monthly` | `{rule:'monthly', day:1, time:'10:00', target:'next-month'}` 매월 1일 오전 10시, 다음 달분 | O |
-| `monthly` + `weekdayOnly` | `{..., weekdayOnly:true}` 1일이 주말이면 다음 평일 (공휴일은 `overrides`로) | O |
+| `monthly` + `weekdayOnly` | `{..., weekdayOnly:true}` 주말이면 다음 평일, 그러면 다음 달로 넘어가는 월말은 그 달 마지막 평일 (공휴일은 `overrides`로) | O |
 | `monthly` 여러 날 | `{rule:'monthly', day:[1,15], time:'09:00'}` 매월 1일·15일 | O |
 | `monthlyWeekday` | `{rule:'monthlyWeekday', week:1, weekday:3, time:'11:00'}` 매월 첫째 수요일 (`week:-1`은 마지막 주) | O |
 | `weekly` | `{rule:'weekly', weekday:2, time:'09:00'}` 매주 화요일 | O |
@@ -24,6 +24,7 @@
 - `target`: `this-month` / `next-month` / `two-months` — "11월분" 같은 라벨만 만듭니다.
 - `note`: `always`·`fixed`는 설명을 대신하고, 나머지는 설명 뒤에 붙습니다.
 - `overrides: [{date, time, note}]`는 계산 결과를 대신하고 "확정"으로 표시됩니다. 한 달에 한 번 열리는 규칙은 **같은 달** 회차를, 여러 번 열리는 규칙(`day` 배열·`weekly`)은 **같은 날** 회차를 대신합니다. `{date, cancel:true}`는 그 회차를 없앱니다.
+- 확정일이 **다른 달(날)로 옮겨졌으면** `replaces`로 원래 회차를 가리킵니다. 예: 1월분이 12/1 대신 11/30에 열리면 `{date:'2026-11-30', note:'1월분', replaces:'2026-12'}` (날짜 단위 규칙은 `replaces:'YYYY-MM-DD'`). 이걸 빼면 예상(12/1)과 확정(11/30)이 함께 뜹니다.
 - 그달에 31일이 없으면 말일로 계산합니다.
 
 ## 갱신

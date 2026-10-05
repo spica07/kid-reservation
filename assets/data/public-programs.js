@@ -1,6 +1,6 @@
 /* tools/fetch_seoul_reservation.py 가 만든 파일 — 손으로 고치지 마세요 */
 window.KR_PUBLIC = {
- "generatedAt": "2026-10-05T21:32:10+09:00",
+ "generatedAt": "2026-10-05T21:56:45+09:00",
  "items": [
   {
    "id": "S241012072652127204",
@@ -708,21 +708,6 @@ window.KR_PUBLIC = {
    "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260716141742222822"
   },
   {
-   "id": "S260707150755426291",
-   "name": "[청계천박물관] 2026년 하반기 온라인 교육 <톡톡톡 청계천> 참여기관 모집 안내",
-   "place": "청계천박물관(성동구)",
-   "area": "성동구",
-   "target": "어린이(지역아동센터 및 초등돌봄교실)",
-   "fee": "무료",
-   "category": "교육체험",
-   "rcptStart": "2026-08-03 10:00",
-   "rcptEnd": "2026-11-16 18:00",
-   "useStart": "2026-08-26",
-   "useEnd": "2026-11-25",
-   "status": "접수중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260707150755426291"
-  },
-  {
    "id": "S260804140349138601",
    "name": "[송파책박물관] 초등3, 4학년 학급단체 교육 <잘 아는 송파, 자라는 우리 2>",
    "place": "송파책박물관",
@@ -841,21 +826,6 @@ window.KR_PUBLIC = {
    "useEnd": "2026-11-06",
    "status": "접수중",
    "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260729143847758884"
-  },
-  {
-   "id": "S260819100530157061",
-   "name": "(주말) 수수께끼 도형 놀이",
-   "place": "서울시립 미술아카이브 배움동",
-   "area": "종로구",
-   "target": "어린이(초등학교 1, 2, 3학년)",
-   "fee": "무료",
-   "category": "교육체험",
-   "rcptStart": "2026-08-19 10:50",
-   "rcptEnd": "2026-10-22 23:00",
-   "useStart": "2026-09-12",
-   "useEnd": "2026-10-25",
-   "status": "접수중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260819100530157061"
   },
   {
    "id": "S260820092113126403",
@@ -2508,21 +2478,6 @@ window.KR_PUBLIC = {
    "url": "https://umppa.seoul.go.kr/icare/user/chilProgrm/orgideaExprnCtzn/BD_selectOrgideaExprnCtzn.do?q_progrmCl=1000&q_placeCode=500&q_progrmSn=3383"
   },
   {
-   "id": "S260923172115598708",
-   "name": "[경의선숲길] 숲길 따라 교과 산책 (평일 초등, 변신! 나만의 찰흙 곤충!)_10월",
-   "place": "경의선 숲길사랑방",
-   "area": "용산구",
-   "target": "어린이(8~11세)",
-   "fee": "무료",
-   "category": "교육체험",
-   "rcptStart": "2026-09-28 10:00",
-   "rcptEnd": "2026-10-28 17:00",
-   "useStart": "2026-10-08",
-   "useEnd": "2026-10-29",
-   "status": "접수중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260923172115598708"
-  },
-  {
    "id": "S260915145911868167",
    "name": "[보라매공원] 유아숲 정원 늘봄 (평일, 유아기관단체)_10월",
    "place": "보라매공원 관리사무소.>보라매공원 관리사무소",
@@ -3016,36 +2971,6 @@ window.KR_PUBLIC = {
    "useEnd": "2026-10-24",
    "status": "접수중",
    "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261001100206789761"
-  },
-  {
-   "id": "S260928092556742991",
-   "name": "(주말_오전 10시 30분) [서울기록원] 가족 대상 프로그램 <<2026 가족 타임캡슐>>",
-   "place": "서울기록원",
-   "area": "은평구",
-   "target": "가족(초등생 1~3학년 1명, 보호자 1명)",
-   "fee": "무료",
-   "category": "교육체험",
-   "rcptStart": "2026-10-01 17:28",
-   "rcptEnd": "2026-10-24 16:00",
-   "useStart": "2026-09-28",
-   "useEnd": "2026-10-25",
-   "status": "접수중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260928092556742991"
-  },
-  {
-   "id": "S260928094743080824",
-   "name": "(주말_오후 2시) [서울기록원] 가족 대상 프로그램 <<2026 가족 타임캡슐>>",
-   "place": "서울기록원",
-   "area": "은평구",
-   "target": "가족(초등생 1~3학년 1명, 보호자 1명)",
-   "fee": "무료",
-   "category": "교육체험",
-   "rcptStart": "2026-10-01 17:28",
-   "rcptEnd": "2026-10-24 16:00",
-   "useStart": "2026-09-28",
-   "useEnd": "2026-10-25",
-   "status": "접수중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260928094743080824"
   },
   {
    "id": "S261001170912452277",
@@ -5373,21 +5298,6 @@ window.KR_PUBLIC = {
    "url": "https://umppa.seoul.go.kr/icare/user/kidsCafeResve/BD_selectKidsCafeResveCal.do?q_fcltyId=JR250801"
   },
   {
-   "id": "S250427095855734131",
-   "name": "(주말)특명! 독립군 밀서를 안전하게 전달하라",
-   "place": "봉수대공원",
-   "area": "중랑구",
-   "target": "가족, 어린이(초등 1-2학년)",
-   "fee": "무료",
-   "category": "교육체험",
-   "rcptStart": "2026-10-05 09:00",
-   "rcptEnd": "2026-10-22 09:00",
-   "useStart": "2026-10-10",
-   "useEnd": "2026-10-24",
-   "status": "접수중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S250427095855734131"
-  },
-  {
    "id": "S261001092854130834",
    "name": "(평일 오전)2026년 11월 불암산나비정원 단체 관람",
    "place": "불암산 나비정원",
@@ -5656,36 +5566,6 @@ window.KR_PUBLIC = {
    "useEnd": "2026-12-10",
    "status": "안내중",
    "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261001174345341320"
-  },
-  {
-   "id": "S260921163332629314",
-   "name": "[서울백제어린이박물관] 초등 1~2학년 어린이 동반 가족 대상 <뮤지엄 휴휴프로그램8> \"도심 속 힐링캠프\"(일일캠프)",
-   "place": "서울백제어린이박물관",
-   "area": "송파구",
-   "target": "초등학생(초등 1-2학년 어린이 동반 가족)",
-   "fee": "무료",
-   "category": "역사",
-   "rcptStart": "2026-10-06 10:00",
-   "rcptEnd": "2026-10-08 08:00",
-   "useStart": "2026-09-21",
-   "useEnd": "2026-11-30",
-   "status": "안내중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260921163332629314"
-  },
-  {
-   "id": "S260818134104329277",
-   "name": "[서울백제어린이박물관] 초등 2-3학년 어린이 동반 가족 대상 <뮤지엄 휴휴프로그램3> \"피리 부는 꼬마 악사\"",
-   "place": "서울백제어린이박물관",
-   "area": "송파구",
-   "target": "가족(초등 2-3학년 어린이 동반 가족)",
-   "fee": "무료",
-   "category": "역사",
-   "rcptStart": "2026-10-06 10:00",
-   "rcptEnd": "2026-10-14 08:00",
-   "useStart": "2026-08-18",
-   "useEnd": "2026-10-31",
-   "status": "안내중",
-   "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260818134104329277"
   },
   {
    "id": "S261002122348515310",

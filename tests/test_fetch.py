@@ -38,6 +38,12 @@ class KidTargetTest(unittest.TestCase):
         self.check('제한없음(유치원 또는 어린이집 기관)', '', False)
         self.check('성인', '어린이 안전교육 강사 양성', False)
         self.check('초등학생', '어린이 과학교실', False)
+        self.check('어린이(8~11세)', '', False)
+        self.check('가족(초등생 1~3학년 1명, 보호자 1명)', '', False)
+        self.check('어린이(초등학교 1, 2, 3학년)', '', False)
+        self.check('초등학생(초등 1-2학년 어린이 동반 가족)', '', False)
+        self.check('어린이(지역아동센터 및 초등돌봄교실)', '', False)
+        self.check('제한없음(유아 동반 시 유모차 반입 불가)', '가족 숲 체험', True)
 
     def test_generic_target_uses_name(self):
         self.check('제한없음', '가족 숲 체험', True)
