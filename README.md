@@ -31,7 +31,7 @@
 1. **공공예약**: `py tools/fetch_seoul_reservation.py` (`.env`에 `SEOUL_API_KEY`, kid-festival과 같은 키). 출력되는 "뺀 문구"를 훑어 미취학 아이가 갈 수 있는데 빠진 게 없는지 봅니다. 고칠 땐 `tests/test_fetch.py`에 그 문구를 먼저 넣습니다.
 2. **큐레이션**: 매달 말, 달력에 뜨는 곳(`monthly`·`monthlyWeekday`·`weekly`)의 다음 달 오픈 공지를 **공식 사이트에서** 확인해 `overrides`에 넣고 `verifiedAt`·`source`를 고칩니다.
    - **공식 안내로 확인하지 못한 규칙은 넣지 않습니다.** 모르면 `always`/`fixed` + `note`.
-   - 블로그·기사·예전 데이터는 바뀌어 있을 수 있습니다. 2026-10-05에 롯데 스위트파크(매월 1일 → 첫째 수요일)와 국립인천해양박물관(전월 1일 → 매월 1·15일)이 kid-festival 데이터와 달랐습니다.
+   - 블로그·기사·예전 데이터는 바뀌어 있을 수 있습니다. 2026-10-05에 롯데 스위트파크(매월 1일 → 첫째 수요일)와 국립인천해양박물관(전월 1일 → 매월 1·15일)이 kid-festival 데이터와 달랐습니다(kid-festival도 같은 날 정정).
    - 45일 넘게 확인 안 한 항목은 상세 화면에 "확인한 지 오래됐어요"가 뜹니다.
 3. 테스트: `node --test tests/*.test.js` 와 `py tests/test_fetch.py`.
 4. `sw.js`의 `CACHE` 숫자를 올리고 커밋·푸시.
