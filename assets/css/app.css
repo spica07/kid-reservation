@@ -79,7 +79,9 @@ main { max-width: 860px; margin: 0 auto; padding: 12px 16px 24px; }
 .detail dt { color: var(--muted); }
 .detail ul { list-style: none; display: grid; gap: 4px; margin: 6px 0 12px; }
 .detail .stale { color: var(--guess); background: var(--guess-bg); border-radius: 10px; padding: 6px 10px; font-size: 0.85rem; }
-.detail .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.detail .actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 8px; margin-top: 14px; }
+/* 상세 하단 버튼은 크기를 똑같이: 좁으면 위아래로 꽉 차게, 넓으면 반반 (찜 화면용 아래 여백은 빼고) */
+.detail .actions .btn { justify-content: center; min-height: 44px; margin: 0; }
 .detail .close { position: absolute; top: 12px; right: 12px; border: 0; background: none; color: var(--muted); width: 32px; height: 32px; cursor: pointer; }
 
 .foot { max-width: 860px; margin: 0 auto; padding: 16px 16px 32px; font-size: 0.85rem; color: var(--muted); font-family: 'Gaegu', sans-serif; }
