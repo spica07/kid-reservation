@@ -121,3 +121,27 @@ test('addDays: 월말·윤년', () => {
   assert.equal(S.addDays('2028-02-28', 1), '2028-02-29');
   assert.equal(S.addDays('2026-12-31', 1), '2027-01-01');
 });
+
+test('monthly weekdayOnly: 1일이 주말이면 다음 월요일로 미룬다', () => {
+  const p = monthly({ open: { rule: 'monthly', day: 1, time: '10:00', target: 'next-month', weekdayOnly: true } });
+  // 2026-11-01은 일요일, 2026-08-01은 토요일
+  assert.deepEqual(S.occurrences(p, '2026-10-01', 61).map(o => o.date), ['2026-10-01', '2026-11-02']);
+  assert.deepEqual(S.occurrences(p, '2026-08-01', 5).map(o => [o.date, o.label]), [['2026-08-03', '9월분']]);
+  assert.equal(S.describeRule(p.open), '매월 첫 평일 오전 10시, 다음 달분');
+  assert.equal(S.describeRule({ ...p.open, day: 15 }), '매월 15일(주말이면 다음 평일) 오전 10시, 다음 달분');
+});
+
+test('rolling: 관람일 N일 전에 열리는 방식은 달력 일정이 없고 설명만 있다', () => {
+  const p = monthly({ open: { rule: 'rolling', daysBefore: 14, time: '00:00' } });
+  assert.equal(S.isValidProgram(p), true);
+  assert.deepEqual(S.occurrences(p, '2026-10-01', 60), []);
+  assert.equal(S.describeRule(p.open), '관람일 2주 전 자정에 열려요');
+  assert.equal(S.describeRule({ rule: 'rolling', daysBefore: 10, time: '09:00' }), '관람일 10일 전 오전 9시에 열려요');
+  assert.equal(S.isValidProgram(monthly({ open: { rule: 'rolling', time: '09:00' } })), false);
+});
+
+test('open.note: 상시·수시 규칙은 설명을 대신하고, 나머지는 덧붙인다', () => {
+  assert.equal(S.describeRule({ rule: 'fixed', note: '회차마다 공지 후 접수' }), '회차마다 공지 후 접수');
+  assert.equal(S.describeRule({ rule: 'always', note: '방문 전날까지 예약' }), '방문 전날까지 예약');
+  assert.equal(S.describeRule({ rule: 'rolling', daysBefore: 7, time: '10:00', note: '1인 1일 1회' }), '관람일 1주 전 오전 10시에 열려요 · 1인 1일 1회');
+});

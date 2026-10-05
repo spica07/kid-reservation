@@ -42,7 +42,9 @@
     if (!p || !p.id || !p.open || !p.open.rule) return false;
     const o = p.open;
     if (o.rule === 'always' || o.rule === 'fixed') return true;
-    if (!TIMED_RULES.includes(o.rule) || !/^\d{2}:\d{2}$/.test(o.time || '')) return false;
+    const timeOk = /^\d{2}:\d{2}$/.test(o.time || '');
+    if (o.rule === 'rolling') return timeOk && Number.isInteger(o.daysBefore) && o.daysBefore >= 1;
+    if (!TIMED_RULES.includes(o.rule) || !timeOk) return false;
     if (o.rule === 'monthly') return o.day >= 1 && o.day <= 31;
     if (o.rule === 'monthlyWeekday') return o.weekday >= 0 && o.weekday <= 6 && (o.week === -1 || (o.week >= 1 && o.week <= 5));
     return o.weekday >= 0 && o.weekday <= 6;
@@ -67,9 +69,14 @@
     let { y, m } = parse(from);
     const end = parse(to);
     while (y < end.y || (y === end.y && m <= end.m)) {
-      const date = open.rule === 'monthly'
+      let date = open.rule === 'monthly'
         ? ymd(y, m, Math.min(open.day, daysInMonth(y, m)))
         : nthWeekday(y, m, open.week, open.weekday);
+      // 주말이면 다음 평일로 (공휴일은 알 수 없으니 overrides로 확정한다)
+      if (date && open.rule === 'monthly' && open.weekdayOnly) {
+        const wd = weekdayOf(date);
+        if (wd === 6) date = addDays(date, 2); else if (wd === 0) date = addDays(date, 1);
+      }
       if (date && date >= from && date <= to) out.push(date);
       m += 1; if (m > 12) { m = 1; y += 1; }
     }
@@ -116,17 +123,32 @@
     return `${part} ${hh}시${mi ? ` ${mi}분` : ''}`;
   }
 
-  function describeRule(open) {
-    if (!open) return '';
+  function monthlyDay(open) {
+    if (!open.weekdayOnly) return `${open.day}일`;
+    return open.day === 1 ? '첫 평일' : `${open.day}일(주말이면 다음 평일)`;
+  }
+
+  function baseRule(open) {
     const tail = open.target && TARGET_TEXT[open.target] ? `, ${TARGET_TEXT[open.target]}` : '';
     switch (open.rule) {
-      case 'monthly': return `매월 ${open.day}일 ${formatTime(open.time)}${tail}`;
+      case 'monthly': return `매월 ${monthlyDay(open)} ${formatTime(open.time)}${tail}`;
       case 'monthlyWeekday': return `매월 ${ORDINALS[open.week]} 주 ${WEEKDAYS[open.weekday]}요일 ${formatTime(open.time)}${tail}`;
       case 'weekly': return `매주 ${WEEKDAYS[open.weekday]}요일 ${formatTime(open.time)}`;
+      case 'rolling': {
+        const ahead = open.daysBefore % 7 === 0 ? `${open.daysBefore / 7}주` : `${open.daysBefore}일`;
+        return `관람일 ${ahead} 전 ${formatTime(open.time)}에 열려요`;
+      }
       case 'fixed': return '정해진 날짜에 공지 후 열려요';
       case 'always': return '언제든 예약할 수 있어요';
       default: return '';
     }
+  }
+
+  /* open.note: 상시·수시(always/fixed)는 설명을 대신하고, 나머지는 뒤에 덧붙인다 */
+  function describeRule(open) {
+    if (!open) return '';
+    if (!open.note) return baseRule(open);
+    return open.rule === 'always' || open.rule === 'fixed' ? open.note : `${baseRule(open)} · ${open.note}`;
   }
 
   return { occurrences, nextOccurrences, describeRule, formatTime, kstToday, toInstant, addDays, isValidProgram };
