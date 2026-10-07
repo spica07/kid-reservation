@@ -76,6 +76,28 @@ window.KR_PROGRAMS = [
     verifiedAt: '2026-10-05', source: 'https://www.beautifulshinhan.co.kr/ (금융교육 > 교육신청 목록)',
   },
 
+  {
+    id: 'arisunara', name: '아리수나라', org: '서울아리수본부',
+    region: 'seoul', regionName: '서울', location: '서울 광진구 능동로 216 (서울어린이대공원 안)',
+    category: '박물관·과학관', age: '초등 3학년 이하 어린이 (보호자 동반)', fee: '무료', free: true,
+    open: { rule: 'monthly', day: 1, time: '09:00', target: 'next-month', weekdayOnly: true },
+    // 공식 규칙은 "전달 첫 주 평일(공휴일이면 다음 날) 9시" — 2027-01-01은 신정이라 1월 4일(월)
+    overrides: [{ date: '2027-01-04', time: '09:00', note: '2월분' }],
+    method: '선착순', bookingUrl: 'https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S240603093238072625',
+    tip: '이용하려는 달의 전달 첫 평일 오전 9시에 열리고, 다음 달까지만 예약할 수 있어요. 하루 5회차(회당 80분)이고 월요일은 쉬어요.',
+    verifiedAt: '2026-10-07', source: 'https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S240603093238072625',
+  },
+  {
+    id: 'seoul-i-family', name: '서울시교육청 유아교육진흥원 가족체험', org: '서울특별시교육청 유아교육진흥원',
+    region: 'seoul', regionName: '서울', location: '서울 종로구 사직로9길 15-8 (종로도서관 옆)',
+    category: '놀이·키즈카페', age: '3~5세 (2020~2022년생), 서울 거주 또는 서울시교육청 소속 유치원 재원', fee: '무료', free: true,
+    open: { rule: 'fixed', note: '매달 초 공지사항에 다음 달 운영 안내와 예약 일시가 올라와요' },
+    overrides: [{ date: '2026-10-15', time: '15:00', note: '11월분' }],
+    method: '선착순', bookingUrl: 'https://seoul-i.sen.go.kr/FUS/CV/MI000000000000000119.do',
+    tip: '아이 이름으로 유아회원 가입을 미리 해 둬야 예약돼요. 성인 2명과 유아 3명까지 신청하고, 체험 2일 전 15시 이후 취소하거나 안 가면 30일 동안 예약이 막혀요. 주차장이 없어요.',
+    verifiedAt: '2026-10-07', source: 'https://seoul-i.sen.go.kr/ ([가족체험] 2026년 11월 가족체험 운영 안내, 2026-10-01 공지)',
+  },
+
   // ── 매주 열리는 곳 ─────────────────────────────────────────
   {
     id: 'seoul-kids-cafe', name: '서울형 키즈카페', org: '서울시 (우리동네키움포털)',
@@ -158,6 +180,17 @@ window.KR_PROGRAMS = [
     method: '선착순', bookingUrl: 'https://www.siheung.go.kr/mesm/main',
     tip: '시흥시민은 50% 할인돼요. 예약을 못 했으면 현장 예약도 할 수 있어요.',
     verifiedAt: '2026-06-05', source: 'kid-festival festivals.js (시흥 해양생태과학관, 2026-06-05 확인)',
+  },
+
+  {
+    id: 'ompang', name: "서울생활사박물관 어린이체험실 '옴팡'", org: '서울생활사박물관',
+    region: 'seoul', regionName: '서울', location: '서울 노원구 동일로174길 27 (공릉동)',
+    category: '박물관·과학관', age: '36개월 이상 유아~초등학생 (보호자 동반)', fee: '무료', free: true,
+    open: { rule: 'rolling', daysBefore: 14, time: '09:00', note: '관람 하루 전 23시까지' },
+    overrides: [],
+    method: '선착순', bookingUrl: 'https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S251118144705678859',
+    tip: '하루 3회차(9:40, 13:00, 15:30)이고 회차당 2시간이에요. 한 번에 2~5명까지 신청하고, 보호자도 인원에 넣어야 해요.',
+    verifiedAt: '2026-10-07', source: 'https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S251118144705678859',
   },
 
   // ── 사전 예약은 필수지만 오픈 시각이 따로 없는 곳 ─────────────────
@@ -430,6 +463,39 @@ window.KR_PROGRAMS = [
     method: '선착순', bookingUrl: 'https://www.jemulpo.go.kr/museum/guide/reserve.jsp',
     tip: '옛 달동네 생활을 들여다보는 박물관이에요.',
     verifiedAt: '2026-09-25', source: 'kid-festival festivals.js (수도국산달동네박물관, 2026-09-25 확인)',
+  },
+
+  {
+    id: 'yicf', name: '용인어린이상상의숲', org: '용인문화재단',
+    region: 'gyeonggi', regionName: '경기', location: '경기 용인시 처인구 동백죽전대로 61 (용인미르스타디움 안)',
+    category: '놀이·키즈카페', age: '미술놀이터 24개월 이상', fee: '입장 무료 · 미술놀이터 6,000원 (용인시민 5,000원)', free: false,
+    open: { rule: 'always', note: 'NOL 티켓에서 프로그램별로 예매해요 (관람 전날 17시, 일요일 관람은 전날 15시까지)' },
+    overrides: [],
+    method: '선착순', bookingUrl: 'https://nol.yanolja.com/ticket/products/26005667',
+    tip: '무료 자율 체험은 예약 없이 이용해요. 어린이 1매에 보호자 1명은 무료예요. 월요일과 평일 공휴일은 쉬어요.',
+    verifiedAt: '2026-10-07', source: 'https://yicf.or.kr/lib/PageContent.do?menuNo=010000&subMenuNo=010100 · https://nol.yanolja.com/ticket/products/26005667',
+  },
+  {
+    id: 'njp-toy', name: '백남준아트센터 〈나 역시 장난감〉', org: '백남준아트센터',
+    region: 'gyeonggi', regionName: '경기', location: '경기 용인시 기흥구 백남준로 10',
+    category: '공연·문화', age: '주말 개인 회차 누구나 (평일은 5~9세 단체)', fee: '주말 무료 (2026 시범 운영)', free: true,
+    open: { rule: 'always', note: '경기문화재단 회원으로 신청해요. 주말 개인 회차는 10월 24일~11월 28일 토요일 오전 11시' },
+    overrides: [],
+    method: '선착순', bookingUrl: 'http://members.ggcf.kr/events/3435',
+    tip: '백남준의 TV 작품을 보고 밀가루 클레이로 TV를 만들어요. 회차당 20명 이내예요. 미술관 관람은 예약 없이 무료예요.',
+    verifiedAt: '2026-10-07', source: 'https://njp.ggcf.kr/edus/391',
+  },
+
+  // ── 축제·행사 사전 신청 (한 번만 열리는 곳) ─────────────────────
+  {
+    id: 'fest-seonyudo-birdwalk-2026', name: '선유도 새산책 (영등포선유도원축제)', org: '영등포문화재단',
+    region: 'seoul', regionName: '서울', location: '서울 영등포구 선유도공원',
+    category: '자연·생태', age: '누구나 (만 13세 이하 자녀 1명 동반 신청 가능, 낮 12시 어린이 새산책은 가족 대상)', fee: '무료', free: true,
+    open: { rule: 'fixed', note: '영등포선유도원축제 10월 24일, 25일 프로그램, 신청 기간 10월 7일~14일' },
+    overrides: [{ date: '2026-10-07', time: '10:00', note: '선유도원축제 새산책' }],
+    method: '선착순', bookingUrl: 'https://forms.gle/1eJB1S8ZMFJsC7RT8',
+    tip: '10월 24일, 25일 이틀 모두 낮 12시 어린이 새산책, 오후 2시와 4시 생태탐조(전문탐조)로 하루 3회예요. 회차당 17명이고 선정 결과는 10월 15일 문자로 와요. 자리가 남으면 당일 현장에서도 받아요.',
+    verifiedAt: '2026-10-07', source: 'https://www.ydpcf.or.kr/postview.do?bid=1&pid=2804',
   },
 
   // ── 사설(민간) 인기 예약 ─────────────────────────────────────
