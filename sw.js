@@ -1,5 +1,5 @@
 /* 콘텐츠를 바꾸면 CACHE 숫자를 올린다. 데이터가 자주 바뀌어 네트워크 우선으로 받고, 끊겼을 때만 캐시를 쓴다. */
-const CACHE = 'kr-cache-v4';
+const CACHE = 'kr-cache-v5';
 const ASSETS = [
   './', 'index.html', 'manifest.json', 'assets/css/app.css',
   'assets/js/schedule.js', 'assets/js/ics.js', 'assets/js/favorites.js', 'assets/js/app.js',

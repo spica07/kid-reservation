@@ -497,6 +497,26 @@ window.KR_PROGRAMS = [
     tip: '10월 24일, 25일 이틀 모두 낮 12시 어린이 새산책, 오후 2시와 4시 생태탐조(전문탐조)로 하루 3회예요. 회차당 17명이고 선정 결과는 10월 15일 문자로 와요. 자리가 남으면 당일 현장에서도 받아요.',
     verifiedAt: '2026-10-07', source: 'https://www.ydpcf.or.kr/postview.do?bid=1&pid=2804',
   },
+  {
+    id: 'fest-seocho-ai-flyingcatch-2026', name: '플라잉캐쳐 (2026 서초 AI 페스타)', org: '서초구',
+    region: 'seoul', regionName: '서울', location: '서울 서초구 서초문화예술공원',
+    category: '놀이·키즈카페', age: '공지에 나이 조건이 없어요', fee: '무료', free: true,
+    open: { rule: 'fixed', note: '2026 서초 AI 페스타 10월 17일 프로그램, 사전예약 10월 12일 10시 오픈' },
+    overrides: [{ date: '2026-10-12', time: '10:00', note: '서초 AI 페스타 플라잉캐쳐' }],
+    method: '선착순', bookingUrl: 'https://seochoai.kr/',
+    tip: '행사는 10월 17일(토) 10시~18시예요. 플라잉캐쳐는 10시~17시 타임별 25명 선착순이고, 무대 프로그램도 사전 신청이에요. 나머지 AI 체험존은 현장에서 바로 참여해요.',
+    verifiedAt: '2026-10-10', source: 'https://seochoai.kr/',
+  },
+  {
+    id: 'fest-seoul-ballet-babyclass-2026', name: '우리아이 첫 발레수업 엄마랑 아가랑 (서울발레페스티벌)', org: '서울발레페스티벌 조직위원회',
+    region: 'seoul', regionName: '서울', location: '서울 송파구 석촌호수 서호 수변무대',
+    category: '공연·문화', age: '공지에 정확한 나이가 없어요 (엄마와 아기 대상)', fee: '무료', free: true,
+    open: { rule: 'always', note: '서울발레페스티벌 10월 18일 프로그램, 지금 시민참여 신청을 받고 있어요(선착순 마감)' },
+    overrides: [],
+    method: '선착순', bookingUrl: 'https://www.seoulballetfestival.com/SBFF-2026',
+    tip: '10월 18일(일) 13시~15시, 총 10팀 선착순이에요. 사이트의 시민참여 신청하기에서 신청해요. 발레 공연 관람은 예약 없이 무료예요.',
+    verifiedAt: '2026-10-10', source: 'https://www.seoulballetfestival.com/SBFF-2026',
+  },
 
   // ── 사설(민간) 인기 예약 ─────────────────────────────────────
   {
