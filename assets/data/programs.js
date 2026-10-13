@@ -284,16 +284,17 @@ window.KR_PROGRAMS = [
     tip: '현장 발권은 남은 자리가 있을 때만 돼요.',
     verifiedAt: '2026-10-13', source: 'https://www.kidzania.co.kr/experience_guide/charge_guide.do?srcLocalDiv=001&srcLocale=ko',
   },
-  {
-    id: 'stamp-museum', name: '우표박물관', org: '우정사업본부',
-    region: 'seoul', regionName: '서울', location: '서울 중구 소공로 70 (포스트타워 지하 2층)',
-    category: '박물관·과학관', age: '전 연령 (유아·어린이 가족 체험)', fee: '무료', free: true,
-    open: { rule: 'always', note: '네이버 사전예약제예요 (2026.10.10~2027.1.31은 상설전시 대신 페이커 기념우표 기획전시로 운영)' },
-    overrides: [],
-    method: '선착순', bookingUrl: 'https://m.booking.naver.com/booking/12/bizes/1752542/items/8117616',
-    tip: '2027년 1월 31일까지는 상설전시 대신 기념우표 기획전시라 아이 체험 위주가 아니에요. 관람은 9시~16시 50분, 월요일·공휴일은 쉬어요.',
-    verifiedAt: '2026-10-13', source: 'https://stampmuseum.kr/bbs/page.php?hid=m01_02',
-  },
+  // 우표박물관: 2026.10.10~2027.1.31 상설전시 대신 페이커 기념우표 기획전시라 잠시 내림. 2027-02에 운영 확인 후 주석 해제.
+  // {
+  //   id: 'stamp-museum', name: '우표박물관', org: '우정사업본부',
+  //   region: 'seoul', regionName: '서울', location: '서울 중구 소공로 70 (포스트타워 지하 2층)',
+  //   category: '박물관·과학관', age: '전 연령 (유아·어린이 가족 체험)', fee: '무료', free: true,
+  //   open: { rule: 'always', note: '네이버 사전예약제예요 (2026.10.10~2027.1.31은 상설전시 대신 페이커 기념우표 기획전시로 운영)' },
+  //   overrides: [],
+  //   method: '선착순', bookingUrl: 'https://m.booking.naver.com/booking/12/bizes/1752542/items/8117616',
+  //   tip: '2027년 1월 31일까지는 상설전시 대신 기념우표 기획전시라 아이 체험 위주가 아니에요. 관람은 9시~16시 50분, 월요일·공휴일은 쉬어요.',
+  //   verifiedAt: '2026-10-13', source: 'https://stampmuseum.kr/bbs/page.php?hid=m01_02',
+  // },
   {
     id: 'hello-museum', name: '헬로우뮤지움', org: '헬로우뮤지움',
     region: 'seoul', regionName: '서울', location: '서울 성동구 성수일로12길 20 2층',
@@ -487,26 +488,6 @@ window.KR_PROGRAMS = [
   },
 
   // ── 축제·행사 사전 신청 (한 번만 열리는 곳) ─────────────────────
-  {
-    id: 'fest-seonyudo-birdwalk-2026', name: '선유도 새산책 (영등포선유도원축제)', org: '영등포문화재단',
-    region: 'seoul', regionName: '서울', location: '서울 영등포구 선유도공원',
-    category: '자연·생태', age: '누구나 (만 13세 이하 자녀 1명 동반 신청 가능, 낮 12시 어린이 새산책은 가족 대상)', fee: '무료', free: true,
-    open: { rule: 'fixed', note: '영등포선유도원축제 10월 24일, 25일 프로그램, 신청 기간 10월 7일~14일' },
-    overrides: [{ date: '2026-10-07', time: '10:00', note: '선유도원축제 새산책' }],
-    method: '선착순', bookingUrl: 'https://forms.gle/1eJB1S8ZMFJsC7RT8',
-    tip: '10월 24일, 25일 이틀 모두 낮 12시 어린이 새산책, 오후 2시와 4시 생태탐조(전문탐조)로 하루 3회예요. 회차당 17명이고 선정 결과는 10월 15일 문자로 와요. 자리가 남으면 당일 현장에서도 받아요.',
-    verifiedAt: '2026-10-07', source: 'https://www.ydpcf.or.kr/postview.do?bid=1&pid=2804',
-  },
-  {
-    id: 'fest-seocho-ai-flyingcatch-2026', name: '플라잉캐쳐 (2026 서초 AI 페스타)', org: '서초구',
-    region: 'seoul', regionName: '서울', location: '서울 서초구 서초문화예술공원',
-    category: '놀이·키즈카페', age: '공지에 나이 조건이 없어요', fee: '무료', free: true,
-    open: { rule: 'fixed', note: '2026 서초 AI 페스타 10월 17일 프로그램, 사전예약 10월 12일 10시 오픈' },
-    overrides: [{ date: '2026-10-12', time: '10:00', note: '서초 AI 페스타 플라잉캐쳐' }],
-    method: '선착순', bookingUrl: 'https://seochoai.kr/',
-    tip: '행사는 10월 17일(토) 10시~18시예요. 플라잉캐쳐는 10시~17시 타임별 25명 선착순이고, 무대 프로그램도 사전 신청이에요. 나머지 AI 체험존은 현장에서 바로 참여해요.',
-    verifiedAt: '2026-10-10', source: 'https://seochoai.kr/',
-  },
   {
     id: 'fest-seoul-ballet-babyclass-2026', name: '우리아이 첫 발레수업 엄마랑 아가랑 (서울발레페스티벌)', org: '서울발레페스티벌 조직위원회',
     region: 'seoul', regionName: '서울', location: '서울 송파구 석촌호수 서호 수변무대',
